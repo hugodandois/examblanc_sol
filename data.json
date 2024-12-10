@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "publishedYear": 1960,
+        "thumbnail": "https://m.media-amazon.com/images/I/51N5qVjuKAL._AC_SY1000_.jpg"
+    },
+    {
+        "id": 2,
+        "title": "1984",
+        "author": "George Orwell",
+        "publishedYear": 1949
+    },
+    {
+        "id": 3,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "publishedYear": 1925,
+        "thumbnail": "https://m.media-amazon.com/images/I/917z+aMk9ZL.jpg"
+    },
+    {
+        "id": 4,
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "publishedYear": 1951
+    },
+    {
+        "id": 5,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "publishedYear": 1813,
+        "thumbnail": "https://cloud.firebrandtech.com/api/v2/image/111/9780785839866/CoverArtHigh/XL"
+    },
+    {
+        "id": 6,
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "publishedYear": 1937
+    },
+    {
+        "id": 7,
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "publishedYear": 1851,
+        "thumbnail": "https://cdn.kobo.com/book-images/8b5d37e1-1e41-4924-aad8-094e24ae5db7/1200/1200/False/moby-dick-600.jpg"
+    },
+    {
+        "id": 8,
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "publishedYear": 1869
+    },
+    {
+        "id": 9,
+        "title": "The Odyssey",
+        "author": "Homer",
+        "publishedYear": -800,
+        "thumbnail": "https://prodimage.images-bn.com/pimages/9781435163102_p1_v3_s600x595.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoevsky",
+        "publishedYear": 1866
+    }
+]
