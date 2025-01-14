@@ -1,5 +1,13 @@
 import { Request } from "express";
 
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  year: number;
+  image?: string;
+}
+
 interface Pizza {
   id: number;
   title: string;
@@ -57,4 +65,5 @@ export type {
   PotentialUser,
   AuthenticatedRequest,
   JwtPayload,
+  Book, 
 };

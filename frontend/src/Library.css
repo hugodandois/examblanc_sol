@@ -1,0 +1,50 @@
+.library-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 120px); /* Hauteur totale moins navbar et footer */
+    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.library-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 2px solid #eee;
+}
+
+/* Ajout d'un conteneur pour le contenu principal */
+.library-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.access-denied {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.access-denied h2 {
+    color: #dc3545;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.access-denied p {
+    color: #666;
+    font-size: 1.1rem;
+}

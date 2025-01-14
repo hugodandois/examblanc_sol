@@ -1,34 +1,91 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import NavBar from './NavBar';
+import Footer from './Footer';
+import { Outlet } from 'react-router-dom';
+import './App.css';
+import { useEffect, useState } from 'react';
+import { Book, BookContext, AuthenticatedUser, MaybeAuthenticatedUser, User } from './types';
+import { fetchBooks } from './utils/book-services';
+import {  getAuthenticatedUser, storeAuthenticatedUser } from './utils/session';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [books, setBooks] = useState<Book[]>([]);
+
+  const [authenticatedUser, setAuthenticatedUser] =
+    useState<MaybeAuthenticatedUser>(undefined);
+
+  const initBooks = async () => {
+    try {
+      
+      
+      const data = await fetchBooks();
+      setBooks(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    const authenticatedUser = getAuthenticatedUser();
+    if (authenticatedUser) {
+      setAuthenticatedUser(authenticatedUser);
+    }
+  }, []);
+
+  // Ajouter ce nouvel useEffect
+  useEffect(() => {
+    if (authenticatedUser) {
+      initBooks();
+    } else {
+      setBooks([]); // Vider les livres quand l'utilisateur se déconnecte
+    }
+  }, [authenticatedUser]);
+
+  const loginUser = async (user: User) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await fetch("/api/auths/login", options);
+
+      if (!response.ok)
+        throw new Error(
+          `fetch error : ${response.status} : ${response.statusText}`
+        );
+
+      const authenticatedUser: AuthenticatedUser = await response.json();
+      console.log("authenticatedUser: ", authenticatedUser);
+
+      setAuthenticatedUser(authenticatedUser);
+      storeAuthenticatedUser(authenticatedUser);
+    } catch (err) {
+      console.error("loginUser::error: ", err);
+      throw err;
+    }
+  };
+
+  const logout = () => {
+    setAuthenticatedUser(undefined);
+    localStorage.removeItem("authenticatedUser"); // Supprimer les données de session
+  };
+
+  const bookContext: BookContext = {
+    books,
+    loginUser,
+    authenticatedUser,
+    logout
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div style={{ paddingBottom: '50px' }}>
+      <NavBar />
+      <Outlet context={bookContext} />
+      <Footer />
+    </div>
   )
 }
 

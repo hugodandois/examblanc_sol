@@ -5,6 +5,7 @@ import usersRouter from "./routes/users";
 import pizzaRouter from "./routes/pizzas";
 import drinkRouter from "./routes/drinks";
 import authsRouter from "./routes/auths";
+import bookRouter from "./routes/books";
 
 
 const app = express();
@@ -30,6 +31,7 @@ app.use("/users", usersRouter);
 app.use("/pizzas", pizzaRouter);
 app.use("/drinks", drinkRouter);
 app.use("/auths", authsRouter);
+app.use("/books", bookRouter);
 
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
